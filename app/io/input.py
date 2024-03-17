@@ -1,3 +1,6 @@
+import pandas as pd
+
+
 def read_from_console():
     """
     Reads data from console
@@ -5,7 +8,8 @@ def read_from_console():
     Returns:
         str: data from console
     """
-    pass
+    console_text = input("Enter text: ")
+    return console_text
 
 
 def read_from_file(file_name):
@@ -18,17 +22,25 @@ def read_from_file(file_name):
     Returns:
         str: data from file
     """
-    pass
+    try:
+        with open(file_name, "r") as file:
+            return file.read()
+    except FileNotFoundError:
+        return f"File '{file_name}' not found"
 
 
-def read_from_file_with_pandas(file_name):
+def read_from_csv_file_with_pandas(file_name):
     """
-    Reads data from file using pandas
+    Reads data from csv file using pandas
 
     Args:
-        file_name (str): file to read data from
+        file_name (str): csv file to read data from
 
     Returns:
         str: data from file
     """
-    pass
+    try:
+        file_data = pd.read_csv(file_name)
+        return file_data.to_string()
+    except FileNotFoundError:
+        return f"File '{file_name}' not found"

@@ -5,7 +5,7 @@ def write_to_console(text):
     Args:
         text (str): text to print to console
     """
-    pass
+    print(text)
 
 
 def write_to_file(text, file_name):
@@ -15,4 +15,5 @@ def write_to_file(text, file_name):
     Args:
         text (str): text to write to a file
     """
-    pass
+    with open(file_name, "w") as file:
+        file.write(text)
